@@ -1,4 +1,4 @@
-package org.AutomationSelenium.pages.ProjectObjectModel;
+package org.AutomationSelenium.pages.ProjectObjectModel.Normal;
 
 import org.AutomationSelenium.utils.PropertiesReader;
 import org.openqa.selenium.By;

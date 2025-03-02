@@ -1,5 +1,6 @@
-package org.AutomationSelenium.pages.ProjectObjectModel.Normal;
+package org.AutomationSelenium.pages.ProjectObjectModel.Improved;
 
+import org.AutomationSelenium.base.CommonToAllPages;
 import org.AutomationSelenium.utils.PropertiesReader;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -10,7 +11,7 @@ import java.time.Duration;
 import static org.openqa.selenium.support.ui.ExpectedConditions.visibilityOfElementLocated;
 
 
-public class LoginPage {
+public class LoginPage extends CommonToAllPages {
     //Page class
     //page locators
 
@@ -34,8 +35,10 @@ public class LoginPage {
         driver.findElement(compnayKey).sendKeys(PropertiesReader.readKey("PSAtenant"));
         driver.findElement(Nextbutton).click();
         webDriverWait.until(visibilityOfElementLocated(username));
-        driver.findElement(username).sendKeys(PropertiesReader.readKey("PSAusername"));;
-        driver.findElement(password).sendKeys(PropertiesReader.readKey("PSApassword"));
+        //driver.findElement(username).sendKeys(PropertiesReader.readKey("PSAusername"));;
+        enterInput(username,"PSAusername");
+        //driver.findElement(password).sendKeys(PropertiesReader.readKey("PSApassword"));
+        enterInput(password,"PSApassword");
         driver.findElement(Loginbutton).click();
     }
 
