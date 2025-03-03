@@ -8,7 +8,6 @@ import org.AutomationSelenium.driver.DriverManager;
 
 import org.AutomationSelenium.pages.ProjectObjectModel.LoginPage;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.Test;
@@ -40,21 +39,33 @@ public class LoginTests_POM_PropertyReader_DriverManger extends CommonToAllTests
         LoginPage loginPage3 = new LoginPage(DriverManager.getDriver());
         loginPage3.LoginAsUser();
     }
-    @Description("Login as user")
+    @Description("Login as Supervisor")
     @Test
     public void testSupervisorLogin(){
-        WebDriverWait webDriverWait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        WebDriverWait webDriverWait = new WebDriverWait(driver, Duration.ofSeconds(20));
         LoginPage loginPage4 = new LoginPage(DriverManager.getDriver());
         loginPage4.LoginAsSupervisor();
         String overview = webDriverWait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//span[text()='Overview']"))).getText();
         Assert.assertEquals("OVERVIEW", overview);
 
     }
-    @Description("Login as user")
+    @Description("Login as CostManager")
     @Test
     public void testCostManagerLogin(){
+        WebDriverWait webDriverWait = new WebDriverWait(driver, Duration.ofSeconds(60));
         LoginPage loginPage5 = new LoginPage(DriverManager.getDriver());
         loginPage5.LoginAsCostManager();
+        String app = waitForElemenet("//div[@role='tablist']/a[1]");
+        String Approvals = webDriverWait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@role='tablist']/a[1]"))).getText();
+        Assert.assertEquals("APPROVALS", Approvals);
+        String Timesheets = webDriverWait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@role='tablist']/a[2]"))).getText();
+        Assert.assertEquals("TIMESHEETS", Timesheets);
+        String Time_Off = webDriverWait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@role='tablist']/a[3]"))).getText();
+        Assert.assertEquals("TIME OFF", Time_Off);
+        String Expenses = webDriverWait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@role='tablist']/a[4]"))).getText();
+        Assert.assertEquals("EXPENSES", Expenses);
+        String TimeWork_bench= webDriverWait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@role='tablist']/a[5]"))).getText();
+        Assert.assertEquals("TIME WORKBENCH", TimeWork_bench);
     }
 
 }
