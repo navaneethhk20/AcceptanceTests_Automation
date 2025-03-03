@@ -1,6 +1,6 @@
 package org.AutomationSelenium.tests.PSA_Tests;
 
-import io.opentelemetry.api.baggage.propagation.W3CBaggagePropagator;
+
 import io.qameta.allure.Description;
 import junit.framework.Assert;
 import org.AutomationSelenium.base.CommonToAllTests;
@@ -19,7 +19,6 @@ import static org.openqa.selenium.support.ui.ExpectedConditions.visibilityOfElem
 
 public class LoginTests_POM_PropertyReader_DriverManger extends CommonToAllTests {
 
-    LoginPage  loginPage = new LoginPage(DriverManager.getDriver());
     @Description("Verify PSA login")
     @Test
     public void verifyLogin(){
@@ -55,7 +54,6 @@ public class LoginTests_POM_PropertyReader_DriverManger extends CommonToAllTests
         WebDriverWait webDriverWait = new WebDriverWait(driver, Duration.ofSeconds(60));
         LoginPage loginPage5 = new LoginPage(DriverManager.getDriver());
         loginPage5.LoginAsCostManager();
-        String app = waitForElemenet("//div[@role='tablist']/a[1]");
         String Approvals = webDriverWait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@role='tablist']/a[1]"))).getText();
         Assert.assertEquals("APPROVALS", Approvals);
         String Timesheets = webDriverWait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@role='tablist']/a[2]"))).getText();
