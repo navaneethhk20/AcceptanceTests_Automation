@@ -3,7 +3,7 @@
 <suite name="All Test Suite">
     <test verbose="2" preserve-order="true" name="C:/Users/Navaneeth H K/IdeaProjects/Replicon">
         <classes>
-            <class name="org.AutomationSelenium.tests.PSA_Tests.LoginTests_Improved_POM_PropertyReader_DriverManger">
+            <class name="org.AutomationSelenium.tests.PSA_Tests.LoginTests_POM_PropertyReader_DriverManger">
             </class>
         </classes>
     </test>
