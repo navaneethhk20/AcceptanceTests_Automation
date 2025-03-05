@@ -5,6 +5,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Assert;
 
 import java.time.Duration;
 
@@ -39,6 +40,10 @@ public class CommonToAllPages {
   }
   public WebElement getElement(By key) {
     return getDriver().findElement(key);
+  }
+  public void navigateTimeOffPage(){
+    WebDriverWait webDriverWait = new WebDriverWait(driver, Duration.ofSeconds(50));
+    webDriverWait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@role='tablist']/a[3]"))).click();
   }
 
 }

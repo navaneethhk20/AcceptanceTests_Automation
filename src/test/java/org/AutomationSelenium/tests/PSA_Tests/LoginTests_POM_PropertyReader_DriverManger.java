@@ -7,13 +7,19 @@ import org.AutomationSelenium.base.CommonToAllTests;
 import org.AutomationSelenium.driver.DriverManager;
 
 import org.AutomationSelenium.pages.ProjectObjectModel.LoginPage;
+import org.AutomationSelenium.pages.ProjectObjectModel.TimeOffPage;
+import org.AutomationSelenium.pages.ProjectObjectModel.TimesheetPage;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.Test;
 
 import java.time.Duration;
+import java.util.List;
 
 import static org.AutomationSelenium.driver.DriverManager.driver;
 import static org.openqa.selenium.support.ui.ExpectedConditions.*;
@@ -45,19 +51,20 @@ public class LoginTests_POM_PropertyReader_DriverManger extends CommonToAllTests
     @Test
     public void testUserLogin(){
         WebDriverWait webDriverWait = new WebDriverWait(driver, Duration.ofSeconds(20));
+        TimesheetPage timesheetPage = new TimesheetPage();
+        TimeOffPage timeOffPage = new TimeOffPage();
         LoginPage loginPage3 = new LoginPage(DriverManager.getDriver());
         loginPage3.LoginAsUser();
-        webDriverWait.until(visibilityOfElementLocated(By.xpath("//div[@role='tablist']/a[2]"))).click();
-        webDriverWait.until(visibilityOfElementLocated(By.id("add-new-timeline"))).click();
-        String[] weekdays = {"Mon", "Tue", "Wed", "Thu", "Fri"};
-        for(int i = 0; i < weekdays.length; i++) {
-            WebElement hourInput = driver.findElement(By.xpath("//input[contains(@aria-label, 'Timeline 1 " + weekdays[i] + "')]"));
-            hourInput.clear();
-            hourInput.sendKeys("8");
+        webDriverWait.until(ExpectedConditions.elementToBeClickable(
+                By.xpath("//a[@href='/my-work' and contains(@class, 'MuiButtonBase-root') and contains(@class, 'MuiListItem-root')]")
+        )).click();
+        webDriverWait.until(ExpectedConditions.elementToBeClickable(By.xpath("//a[@href='/my-work/timesheet']"))).click();
+        timeOffPage.SubmitTimeoff();
+
         }
 
 
-    }
+
     @Description("Login as Supervisor")
     @Test
     public void testSupervisorLogin(){
