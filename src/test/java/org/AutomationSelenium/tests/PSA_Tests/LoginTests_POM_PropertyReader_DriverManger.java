@@ -48,13 +48,13 @@ public class LoginTests_POM_PropertyReader_DriverManger extends CommonToAllTests
         LoginPage loginPage3 = new LoginPage(DriverManager.getDriver());
         loginPage3.LoginAsUser();
         webDriverWait.until(visibilityOfElementLocated(By.xpath("//div[@role='tablist']/a[2]"))).click();
-//        webDriverWait.until(visibilityOfElementLocated(By.id("add-new-timeline"))).click();
-//        String[] weekdays = {"Mon", "Tue", "Wed", "Thu", "Fri"};
-//        for(int i = 0; i < weekdays.length; i++) {
-//            WebElement hourInput = driver.findElement(By.xpath("//input[contains(@aria-label, 'Timeline 1 " + weekdays[i] + "')]"));
-//            hourInput.clear();
-//            hourInput.sendKeys("8");
-//        }
+        webDriverWait.until(visibilityOfElementLocated(By.id("add-new-timeline"))).click();
+        String[] weekdays = {"Mon", "Tue", "Wed", "Thu", "Fri"};
+        for(int i = 0; i < weekdays.length; i++) {
+            WebElement hourInput = driver.findElement(By.xpath("//input[contains(@aria-label, 'Timeline 1 " + weekdays[i] + "')]"));
+            hourInput.clear();
+            hourInput.sendKeys("8");
+        }
 
 
     }
